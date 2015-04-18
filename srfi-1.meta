@@ -1,0 +1,7 @@
+;; -*- Scheme -*-
+
+((synopsis "SRFI-1 list library")
+ (author "Olin Shivers")
+ (maintainer "The CHICKEN Team")
+ (category data)
+ (license "BSD"))
