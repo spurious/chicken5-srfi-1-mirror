@@ -5,13 +5,34 @@
 ;
 
 (declare
-  (unit srfi-1)
   (disable-interrupts)
-  (hide ##srfi1#cars+cdrs/no-test ##srfi1#cdrs ##srfi1#cars+ ##srfi1#really-append-map ##srfi1#cars+cdrs+
-	##srfi1#cars+cdrs ##srfi1#lset2<=)
   (not standard-bindings member assoc))
 
-(include "common-declarations.scm")
+(module srfi-1
+  (xcons make-list list-tabulate cons* list-copy
+   proper-list? circular-list? dotted-list? not-pair? null-list? list=
+   circular-list length+
+   iota
+   first second third fourth fifth sixth seventh eighth ninth tenth
+   car+cdr
+   take drop
+   take-right drop-right
+   take! drop-right!
+   split-at split-at!
+   last last-pair
+   zip unzip1 unzip2 unzip3 unzip4 unzip5
+   count
+   append! append-reverse append-reverse! concatenate concatenate!
+   unfold fold pair-fold reduce
+   unfold-right fold-right pair-fold-right reduce-right
+   append-map append-map! map! pair-for-each filter-map map-in-order
+   filter partition remove
+   filter! partition! remove!
+   find find-tail any every list-index
+   take-while drop-while take-while!
+   span break span! break!)
+
+(import (except scheme member assoc) chicken)
 
 (register-feature! 'srfi-1)
 
@@ -1020,7 +1041,7 @@
 
 
 ;;; We extend MAP to handle arguments of unequal length.
-(define map map-in-order)	
+;(define map map-in-order)	
 
 
 ;;; filter, remove, partition
@@ -1629,3 +1650,5 @@
 			    (not (any (lambda (lis) (member elt lis =))
 				      lists)))
 			  lis1))))
+
+) ; module
