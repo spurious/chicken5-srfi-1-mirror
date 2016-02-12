@@ -26,8 +26,9 @@
    unfold fold pair-fold reduce
    unfold-right fold-right pair-fold-right reduce-right
    append-map append-map! map! pair-for-each filter-map map-in-order
-   filter partition remove
-   filter! partition! remove!
+   assoc member
+   filter partition remove delete
+   filter! partition! remove! delete!
    find find-tail any every list-index
    take-while drop-while take-while!
    span break span! break!)
