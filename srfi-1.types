@@ -1,9 +1,19 @@
 ;; srfi-1 -*- Scheme -*-
 
-(srfi-1#alist-cons (forall (a b c) (#(procedure #:clean) srfi-1#alist-cons (a b (list-of c)) (pair a (pair b (list-of c))))))
-(srfi-1#alist-copy (forall (a) (#(procedure #:clean #:enforce) srfi-1#alist-copy ((list-of a)) (list-of a))))
-(srfi-1#alist-delete (forall (a b) (#(procedure #:enforce) srfi-1#alist-delete (a (list-of b) #!optional (procedure (a b) *)) list)))
-(srfi-1#alist-delete! (forall (a b) (#(procedure #:enforce) srfi-1#alist-delete! (a (list-of b) #!optional (procedure (a b) *)) undefined)))
+(srfi-1#alist-cons
+ (forall (a b c) (#(procedure #:pure) srfi-1#alist-cons (a b (list-of c))
+                  (pair (pair a b) (list-of c)))))
+(srfi-1#alist-copy
+ (forall (a b) (#(procedure #:clean #:enforce) srfi-1#alist-copy
+                ((list-of (pair a b))) (list-of (pair a b)))))
+(srfi-1#alist-delete
+ (forall (a b c) (#(procedure #:clean) srfi-1#alist-delete
+                  (a (list-of (pair b c)) #!optional (procedure (a b) *))
+                  (list-of (pair b c)))))
+(srfi-1#alist-delete!
+ (forall (a b c) (#(procedure) srfi-1#alist-delete!
+                  (a (list-of (pair b c)) #!optional (procedure (a b) *))
+                  (list-of (pair b c)))))
 (srfi-1#any (forall (a) (#(procedure #:enforce) srfi-1#any ((procedure (a #!rest) *) (list-of a) #!rest list) *)))
 (srfi-1#append! (#(procedure #:enforce) srfi-1#append! (#!rest list) list))
 
@@ -17,6 +27,16 @@
 
 (srfi-1#append-reverse (#(procedure #:clean #:enforce) srfi-1#append-reverse (list list) list))
 (srfi-1#append-reverse! (#(procedure #:enforce) srfi-1#append-reverse! (list list) list))
+(srfi-1#assoc
+ (forall (a b c) (#(procedure #:clean #:foldable) srfi-1#assoc
+                  (a (list-of (pair b c)) #!optional (procedure (a b) *))
+                  (or false (pair b c)))) ; sic
+ ((* null) (let ((#(tmp) #(1))) '#f))
+ (((or symbol procedure immediate) (list-of pair))
+  (##core#inline "C_u_i_assq" #(1) #(2)))
+ ((* (list-of (pair (or symbol procedure immediate) *)))
+  (##core#inline "C_u_i_assq" #(1) #(2))))
+
 (srfi-1#break (forall (a) (#(procedure #:enforce) srfi-1#break ((procedure (a) *) (list-of a)) (list-of a) (list-of a))))
 (srfi-1#break! (forall (a) (#(procedure #:enforce) srfi-1#break! ((procedure (a) *) (list-of a)) (list-of a) (list-of a))))
 (srfi-1#car+cdr (forall (a b) (#(procedure #:clean #:enforce) srfi-1#car+cdr ((pair a b)) a b)))
@@ -153,6 +173,16 @@
  (forall 
   (a b)
   (#(procedure #:enforce) srfi-1#map-in-order ((procedure (a #!rest) b) (list-of a) #!rest list) (list-of b))))
+
+(srfi-1#member
+ (forall (a b) (#(procedure #:clean #:foldable) srfi-1#member
+                (a (list-of b) #!optional (procedure (a b) *)) ; sic
+                (or false (list-of b))))
+ ((* null) (let ((#(tmp) #(1))) '#f))
+ (((or symbol procedure immediate) list)
+  (##core#inline "C_u_i_memq" #(1) #(2)))
+ ((* (list-of (or symbol procedure immediate)))
+  (##core#inline "C_u_i_memq" #(1) #(2))))
 
 (srfi-1#ninth (#(procedure #:clean #:enforce #:foldable) srfi-1#ninth (pair) *))
 
