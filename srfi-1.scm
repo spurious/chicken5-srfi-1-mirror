@@ -13,6 +13,7 @@
    proper-list? circular-list? dotted-list? not-pair? null-list? list=
    circular-list length+
    iota
+   alist-cons alist-copy alist-delete alist-delete!
    first second third fourth fifth sixth seventh eighth ninth tenth
    car+cdr
    take drop
@@ -22,6 +23,7 @@
    last last-pair
    zip unzip1 unzip2 unzip3 unzip4 unzip5
    count
+   delete-duplicates delete-duplicates!
    append! append-reverse append-reverse! concatenate concatenate!
    unfold fold pair-fold reduce
    unfold-right fold-right pair-fold-right reduce-right

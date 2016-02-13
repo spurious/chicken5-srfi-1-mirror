@@ -4,4 +4,5 @@
  (author "Olin Shivers")
  (maintainer "The CHICKEN Team")
  (category data)
+ (test-depends test)
  (license "BSD"))
