@@ -23,8 +23,7 @@
 ;;; DEALINGS IN THE SOFTWARE.
 ;;;
 
-(use test)
-(use srfi-1)
+(use srfi-1 test)
 
 (test-group "lists"
 
@@ -353,5 +352,3 @@
 ) ; end lists/mutators
 
 ) ; end lists
-
-(test-exit)
