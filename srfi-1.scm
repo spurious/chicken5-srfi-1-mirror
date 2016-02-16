@@ -21,6 +21,9 @@
    take! drop-right!
    split-at split-at!
    last last-pair
+   lset= lset<= lset-adjoin lset-difference lset-difference!
+   lset-xor lset-xor! lset-diff+intersection lset-diff+intersection!
+   lset-intersection lset-intersection! lset-union lset-union!
    zip unzip1 unzip2 unzip3 unzip4 unzip5
    count
    delete-duplicates delete-duplicates!
