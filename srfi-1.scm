@@ -31,7 +31,7 @@
    unfold fold pair-fold reduce
    unfold-right fold-right pair-fold-right reduce-right
    append-map append-map! map! pair-for-each filter-map map-in-order
-   assoc member
+   assoc member map for-each
    filter partition remove delete
    filter! partition! remove! delete!
    find find-tail any every list-index
