@@ -28,6 +28,7 @@
    count
    delete-duplicates delete-duplicates!
    append! append-reverse append-reverse! concatenate concatenate!
+   reverse!
    unfold fold pair-fold reduce
    unfold-right fold-right pair-fold-right reduce-right
    append-map append-map! map! pair-for-each filter-map map-in-order
