@@ -23,7 +23,7 @@
 ;;; DEALINGS IN THE SOFTWARE.
 ;;;
 
-(use srfi-1 test)
+(import srfi-1 test)
 
 (test-group "lists"
 

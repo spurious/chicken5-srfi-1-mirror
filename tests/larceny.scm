@@ -46,7 +46,7 @@
 ; that the cells of the results are the cells of the input with only
 ; the CDR changed, ie, values are never moved from one cell to another.
 
-(use srfi-1 test)
+(import srfi-1 test)
 
 ; Test cases are ordered as in the spec.  R5RS procedures are left out.
 
