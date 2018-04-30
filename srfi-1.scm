@@ -39,7 +39,10 @@
    take-while drop-while take-while!
    span break span! break!)
 
-(import (except scheme member assoc) chicken)
+(import (except (scheme) member assoc)
+	(chicken base)
+	(chicken fixnum)
+	(chicken platform))
 
 (register-feature! 'srfi-1)
 
