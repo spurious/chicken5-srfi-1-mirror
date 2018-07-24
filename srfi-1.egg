@@ -6,4 +6,6 @@
  (category data)
  (test-dependencies test)
  (license "BSD")
- (components (extension srfi-1 (types-file (predefined)))))
+ (components (extension srfi-1
+                        (csc-options "-O3" "-d0")
+                        (types-file (predefined)))))
