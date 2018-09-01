@@ -4,7 +4,7 @@
  (author "Olin Shivers")
  (maintainer "The CHICKEN Team")
  (category data)
- (test-dependencies test)
+ (test-dependencies srfi-116)
  (license "BSD")
  (components (extension srfi-1
                         (csc-options "-O3" "-d0")
